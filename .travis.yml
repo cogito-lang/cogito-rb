@@ -1,3 +1,4 @@
+sudo: required
 language: ruby
 rvm:
 - 2.3.1
@@ -11,7 +12,7 @@ before_install:
 - autoreconf -i
 - ./configure
 - make
-- make install
+- sudo make install
 - popd
 script:
 - bundle exec rake
