@@ -13,6 +13,12 @@ class CogitoTest < Minitest::Test
     assert_equal read(:iam), Cogito.to_iam(read(:json))
   end
 
+  def test_to_iam_with_error
+    assert_raises Cogito::CogitoError do
+      Cogito.to_iam('invalid json')
+    end
+  end
+
   private
 
   def read(type)

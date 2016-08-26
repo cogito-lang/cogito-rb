@@ -4,6 +4,11 @@
 #include <ruby.h>
 #include <cogito.h>
 
+typedef struct response {
+  int status;
+  char *message;
+} response_t;
+
 static VALUE to_json(VALUE self, VALUE str);
 static VALUE to_iam(VALUE self, VALUE str);
 
