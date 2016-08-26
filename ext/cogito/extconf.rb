@@ -11,8 +11,8 @@ HEADER_DIRS = [
   RbConfig::CONFIG['includedir'],
 
   # Finally fall back to /usr
-  '/usr/include',
-]
+  '/usr/include'
+].freeze
 
 LIB_DIRS = [
   # First search /opt/local for macports
@@ -25,8 +25,8 @@ LIB_DIRS = [
   RbConfig::CONFIG['libdir'],
 
   # Finally fall back to /usr
-  '/usr/lib',
-]
+  '/usr/lib'
+].freeze
 
 dir_config('cogito', HEADER_DIRS, LIB_DIRS)
 
