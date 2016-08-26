@@ -9,11 +9,11 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Localytics']
   spec.email         = ['oss@localytics.com']
 
-  spec.summary       = 'A ruby library that wraps cogito'
-  spec.homepage      = 'https://github.com/localytics/cogito-ruby'
+  spec.summary       = 'A ruby library that wraps libcogito'
+  spec.homepage      = 'https://github.com/localytics/cogito-rb'
   spec.license       = 'MIT'
 
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
+  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^test/}) }
   spec.bindir        = 'exe'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.extensions    = ['ext/cogito/extconf.rb']
