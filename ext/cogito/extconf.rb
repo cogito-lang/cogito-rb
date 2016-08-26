@@ -1,8 +1,5 @@
 require 'mkmf'
 
-LIBDIR      = RbConfig::CONFIG['libdir']
-INCLUDEDIR  = RbConfig::CONFIG['includedir']
-
 HEADER_DIRS = [
   # First search /opt/local for macports
   '/opt/local/include',
@@ -11,7 +8,7 @@ HEADER_DIRS = [
   '/usr/local/include',
 
   # Check the ruby install locations
-  INCLUDEDIR,
+  RbConfig::CONFIG['includedir'],
 
   # Finally fall back to /usr
   '/usr/include',
@@ -25,21 +22,20 @@ LIB_DIRS = [
   '/usr/local/lib',
 
   # Check the ruby install locations
-  LIBDIR,
+  RbConfig::CONFIG['libdir'],
 
   # Finally fall back to /usr
   '/usr/lib',
 ]
 
-cogito_dirs = dir_config('cogito', '/opt/local/include', '/opt/local/lib')
+dir_config('cogito', HEADER_DIRS, LIB_DIRS)
 
-unless ['', ''] == cogito_dirs
-  HEADER_DIRS.unshift cogito_dirs[0]
-  LIB_DIRS.unshift cogito_dirs[1]
+unless find_header('cogito.h', *HEADER_DIRS)
+  abort 'cogito is missing. please install cogito.'
 end
 
-unless find_header('cogito/parser.tab.h', *HEADER_DIRS)
-  abort 'cogito is missing. Please install cogito.'
+unless find_library('cogito', 'cg_to_json', *LIB_DIRS)
+  abort 'cogito is missing. please install cogito'
 end
 
 create_makefile('cogito/cogito')
