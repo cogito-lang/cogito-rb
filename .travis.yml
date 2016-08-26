@@ -1,4 +1,3 @@
-sudo: required
 language: ruby
 rvm:
 - 2.3.1
@@ -10,9 +9,9 @@ before_install:
 - git clone https://$GITHUB_TOKEN@github.com/localytics/libcogito.git
 - pushd libcogito
 - autoreconf -i
-- ./configure
+- ./configure --prefix="$HOME/.rvm/rubies/ruby-2.3.1"
 - make
-- sudo make install
+- make install
 - popd
 script:
 - bundle exec rake
