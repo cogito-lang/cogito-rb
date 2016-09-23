@@ -1,3 +1,4 @@
+sudo: required
 language: ruby
 rvm:
 - 2.3.1
@@ -6,16 +7,9 @@ branches:
   only:
   - master
 before_install:
-- git clone https://$GITHUB_TOKEN@github.com/localytics/libcogito.git
-- pushd libcogito
-- autoreconf -i
-- ./configure --prefix="$HOME/.rvm/rubies/ruby-2.3.1"
-- make
-- make install
-- popd
+- FILE=$(mktemp)
+- wget 'https://s3.amazonaws.com/public.localytics/artifacts/libcogito_0.0.1-1_amd64.deb' -qO $FILE
+- sudo dpkg -i $FILE && rm $FILE
 script:
 - bundle exec rake
 - bundle exec rubocop
-env:
-  global:
-    secure: cQRcLqW5wLwiRLn30K/XMPL3c5NvG8mvAld4KbjqlTpv2mCQFoOqlf5sdnTYmEqR9CFd9vh12MZNU/qUbSX+GpS1UUuxn5uiuTDZmQximzySyFYMk9KUCCKpK5oQvaV3IQ5tP2jgE+v8iIkgd8TQ/YBFY7sg6oqDmYcCVRojR5/he2s7WpSGjgQXGQN2ZkUo1fq15IDNP2WFHSrYXUHQCTOowcitdNGhe5QGYwXMhLL/yO6ph55A5HvruKZQzrwfO/z2nQZTzmtK5jgTHrPjlshhhXD9gXEM0iYyPGS4EUmHVJHMWMVCN3xSa/ajiYtgftbhIawLvrRhOWMvcDgiIVm0J95J2b8jHZlmSOOtxZPpqq0kLhTR8Vd3X7Xt2keDosUvFVE6IErv9VFI4e2a9+JmbT97ecSjb5YIbejnJ/ybaHUqu88seSNS1eZP8VlrXVXP7jjXwkgOXE0BYE6NKUwJLOfy8w9HO6RfSfP7kOINYkz8fjE5Cm1B4uV1WIbft1RCskPob4bcdUZ+3uGI9N5epemlfdA2k7g7wj22bwIkvsdhw5UnJZNNx2p5bAlskZL5z5tKst8a/jl3g7dB8yUaBXPFCOtS7fZhkgrsq5YBrO3ckLeRIx0QqM+rtzjoibL0LYvYwdsFczsMJG+nXPGrH2UscVmzSOnqasbVG6g=
