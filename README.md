@@ -1,6 +1,7 @@
 # cogito-rb
 
 [![Build Status](https://travis-ci.com/localytics/cogito-rb.svg?token=kQUiABmGkzyHdJdMnCnv&branch=master)](https://travis-ci.com/localytics/cogito-rb)
+[![Coverage Status](https://coveralls.io/repos/github/localytics/cogito-rb/badge.svg?branch=master&t=sL77K4)](https://coveralls.io/github/localytics/cogito-rb?branch=master)
 
 A small ruby library that links against [libcogito](https://github.com/localytics/libcogito).
 
