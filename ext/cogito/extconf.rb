@@ -28,14 +28,25 @@ LIB_DIRS = [
   '/usr/lib'
 ].freeze
 
+failure_message = "\n" << '=' * 85 << "\n"
+failure_message << "libcogito is missing from your system. Please install by running the following steps:\n\n"
+failure_message <<
+  if `uname`.chomp == 'Darwin'
+    <<-MSG
+  $ brew tap localytics/formulae git@github.com:localytics/homebrew-formulae
+  $ brew install cogito
+MSG
+  else
+    <<-MSG
+  $ FILE=$(mktemp)
+  $ wget 'https://s3.amazonaws.com/public.localytics/artifacts/libcogito_0.0.1-1_amd64.deb' -qO $FILE
+  $ sudo dpkg -i $FILE && rm $FILE
+MSG
+  end
+failure_message << '=' * 85 << "\n\n"
+
 dir_config('cogito', HEADER_DIRS, LIB_DIRS)
-
-unless find_header('cogito.h', *HEADER_DIRS)
-  abort 'cogito is missing. please install cogito.'
-end
-
-unless find_library('cogito', 'cg_to_json', *LIB_DIRS)
-  abort 'cogito is missing. please install cogito'
-end
+abort failure_message unless find_header('cogito.h', *HEADER_DIRS)
+abort failure_message unless find_library('cogito', 'cg_to_json', *LIB_DIRS)
 
 create_makefile('cogito/cogito')
