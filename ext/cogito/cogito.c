@@ -1,31 +1,49 @@
 #include "cogito.h"
 
-extern response_t* cg_to_json(char *input);
-extern response_t* cg_to_iam(char *input);
+typedef struct cg_buf {
+  size_t length;
+  size_t capacity;
+  char *content;
+} cg_buf_t;
+
+extern int cg_to_json(cg_buf_t *buffer, char *input);
+extern int cg_to_iam(cg_buf_t *buffer, char *input);
+
+extern cg_buf_t* cg_buf_build(void);
+extern void cg_buf_free(cg_buf_t *buffer);
 
 static VALUE CogitoError;
-
-static VALUE respond(response_t *response) {
-  if (response->status != 0) {
-    rb_raise(CogitoError, "%s", response->message);
-  }
-  return rb_str_new2(response->message);
-}
 
 static VALUE to_json(VALUE self, VALUE str)
 {
   if (TYPE(str) == T_NIL) return Qnil;
 
+  cg_buf_t *buffer = cg_buf_build();
   char *input = rb_string_value_cstr(&str);
-  return respond(cg_to_json(input));
+
+  if (cg_to_json(buffer, input) != 0) {
+    rb_raise(CogitoError, "JSON conversion failed");
+  }
+
+  VALUE response = rb_str_new2(buffer->content);
+  cg_buf_free(buffer);
+  return response;
 }
 
 static VALUE to_iam(VALUE self, VALUE str)
 {
   if (TYPE(str) == T_NIL) return Qnil;
 
+  cg_buf_t *buffer = cg_buf_build();
   char *input = rb_string_value_cstr(&str);
-  return respond(cg_to_iam(input));
+
+  if (cg_to_iam(buffer, input) != 0) {
+    rb_raise(CogitoError, "IAM conversion failed");
+  }
+
+  VALUE response = rb_str_new2(buffer->content);
+  cg_buf_free(buffer);
+  return response;
 }
 
 void Init_cogito()
