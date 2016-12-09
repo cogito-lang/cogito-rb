@@ -1,11 +1,5 @@
 #include "cogito.h"
 
-typedef struct cg_buf {
-  size_t length;
-  size_t capacity;
-  char *content;
-} cg_buf_t;
-
 extern int cg_to_json(cg_buf_t *buffer, char *input);
 extern int cg_to_iam(cg_buf_t *buffer, char *input);
 
