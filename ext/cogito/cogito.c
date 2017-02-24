@@ -43,7 +43,9 @@ static VALUE to_iam(VALUE self, VALUE str)
 void Init_cogito()
 {
   VALUE Cogito = rb_define_module("Cogito");
-  rb_define_singleton_method(Cogito, "to_json", to_json, 1);
+  VALUE CogitoSingleton = rb_singleton_class(Cogito);
+
+  rb_define_private_method(CogitoSingleton, "convert_to_json", to_json, 1);
   rb_define_singleton_method(Cogito, "to_iam", to_iam, 1);
 
   CogitoError = rb_define_class_under(Cogito, "CogitoError", rb_eStandardError);

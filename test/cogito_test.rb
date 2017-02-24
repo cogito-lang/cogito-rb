@@ -6,11 +6,12 @@ class CogitoTest < Minitest::Test
   end
 
   def test_to_json
-    assert_equal read(:json), Cogito.to_json(read(:iam))
+    assert_equal read(:json), Cogito.to_json(read(:iam), value1: 'alpha', value2: 'mu')
   end
 
   def test_to_iam
-    assert_equal read(:iam), Cogito.to_iam(read(:json))
+    expected = read(:iam).gsub('${value1}', 'alpha').gsub('${value2}', 'mu')
+    assert_equal expected, Cogito.to_iam(read(:json))
   end
 
   def test_to_iam_with_error
