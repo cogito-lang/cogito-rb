@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/localytics/cogito-rb.svg?branch=master)](https://travis-ci.org/localytics/cogito-rb)
 [![Coverage Status](https://coveralls.io/repos/github/localytics/cogito-rb/badge.svg?branch=master)](https://coveralls.io/github/localytics/cogito-rb?branch=master)
+[![Gem](https://img.shields.io/gem/v/cogito.svg)](https://rubygems.org/gems/cogito)
 
 A small ruby library that links against [libcogito](https://github.com/localytics/libcogito).
 
