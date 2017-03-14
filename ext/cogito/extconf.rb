@@ -33,7 +33,7 @@ failure_message << "libcogito is missing from your system. Please install by run
 failure_message <<
   if `uname`.chomp == 'Darwin'
     <<-MSG
-  $ brew tap localytics/formulae git@github.com:localytics/homebrew-formulae
+  $ brew tap localytics/formulae
   $ brew install cogito
 MSG
   else
