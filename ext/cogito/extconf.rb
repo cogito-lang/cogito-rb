@@ -29,7 +29,8 @@ LIB_DIRS = [
 ].freeze
 
 failure_message = "\n" << '=' * 85 << "\n"
-failure_message << "libcogito is missing from your system. Please install by running the following steps:\n\n"
+failure_message << 'libcogito is missing from your system. ' \
+                   "Please install by running the following steps:\n\n"
 failure_message <<
   if `uname`.chomp == 'Darwin'
     <<-MSG

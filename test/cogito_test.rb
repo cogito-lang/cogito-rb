@@ -6,7 +6,8 @@ class CogitoTest < Minitest::Test
   end
 
   def test_to_json
-    assert_equal read(:json), Cogito.to_json(read(:iam), value1: 'alpha', value2: 'mu')
+    actual = Cogito.to_json(read(:iam), value1: 'alpha', value2: 'mu')
+    assert_equal read(:json), actual
   end
 
   def test_to_iam
@@ -23,6 +24,6 @@ class CogitoTest < Minitest::Test
   private
 
   def read(type)
-    File.read(File.expand_path(File.join('..', 'files', "test.#{type}"), __FILE__))
+    File.read(File.expand_path(File.join('files', "test.#{type}"), __dir__))
   end
 end
