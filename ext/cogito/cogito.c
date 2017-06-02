@@ -1,10 +1,16 @@
 #include "cogito.h"
 
-extern int cg_to_json(cg_buf_t *buffer, char *input);
-extern int cg_to_iam(cg_buf_t *buffer, char *input);
+typedef struct {
+  size_t length;
+  size_t capacity;
+  char *content;
+} cg_buf_t;
 
-extern cg_buf_t* cg_buf_build(void);
-extern void cg_buf_free(cg_buf_t *buffer);
+int cg_to_json(cg_buf_t *buffer, char *input);
+int cg_to_iam(cg_buf_t *buffer, char *input);
+
+cg_buf_t* cg_buf_build(void);
+void cg_buf_free(cg_buf_t *buffer);
 
 static VALUE CogitoError;
 
