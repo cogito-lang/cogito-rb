@@ -10,32 +10,40 @@ static VALUE CogitoError;
 
 static VALUE to_json(VALUE self, VALUE str)
 {
+  cg_buf_t *buffer;
+  char *input;
+  VALUE response;
+
   if (TYPE(str) == T_NIL) return Qnil;
 
-  cg_buf_t *buffer = cg_buf_build();
-  char *input = rb_string_value_cstr(&str);
+  buffer = cg_buf_build();
+  input = rb_string_value_cstr(&str);
 
   if (cg_to_json(buffer, input) != 0) {
     rb_raise(CogitoError, "JSON conversion failed");
   }
 
-  VALUE response = rb_str_new2(buffer->content);
+  response = rb_str_new2(buffer->content);
   cg_buf_free(buffer);
   return response;
 }
 
 static VALUE to_iam(VALUE self, VALUE str)
 {
+  cg_buf_t *buffer;
+  char *input;
+  VALUE response;
+
   if (TYPE(str) == T_NIL) return Qnil;
 
-  cg_buf_t *buffer = cg_buf_build();
-  char *input = rb_string_value_cstr(&str);
+  buffer = cg_buf_build();
+  input = rb_string_value_cstr(&str);
 
   if (cg_to_iam(buffer, input) != 0) {
     rb_raise(CogitoError, "IAM conversion failed");
   }
 
-  VALUE response = rb_str_new2(buffer->content);
+  response = rb_str_new2(buffer->content);
   cg_buf_free(buffer);
   return response;
 }
