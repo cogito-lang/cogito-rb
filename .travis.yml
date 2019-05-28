@@ -3,11 +3,12 @@ language: ruby
 rvm: 2.6.3
 cache: bundler
 branches:
-  only:
-  - master
+  only: master
 before_install:
+- gem update --system
+- gem install bundler
 - FILE=$(mktemp)
-- wget 'https://s3.amazonaws.com/public.localytics/artifacts/cogito/libcogito_0.2.0-1_amd64.deb' -qO $FILE
+- wget 'https://github.com/cogito-lang/libcogito/releases/download/v0.2.0/libcogito_0.2.0-1_amd64.deb' -qO $FILE
 - sudo dpkg -i $FILE && rm $FILE
 script:
 - bundle exec rake
