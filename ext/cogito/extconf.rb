@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'mkmf'
 
 HEADER_DIRS = [
@@ -28,21 +30,21 @@ LIB_DIRS = [
   '/usr/lib'
 ].freeze
 
-failure_message = "\n" << '=' * 85 << "\n"
+failure_message = +"\n" << '=' * 85 << "\n"
 failure_message << 'libcogito is missing from your system. ' \
                    "Please install by running the following steps:\n\n"
 failure_message <<
   if `uname`.chomp == 'Darwin'
-    <<-MSG
-  $ brew tap localytics/formulae
-  $ brew install cogito
-MSG
+    <<~MSG
+      $ brew tap cogito-lang/formulae
+      $ brew install cogito
+    MSG
   else
-    <<-MSG
-  $ FILE=$(mktemp)
-  $ wget 'https://s3.amazonaws.com/public.localytics/artifacts/libcogito_0.0.1-1_amd64.deb' -qO $FILE
-  $ sudo dpkg -i $FILE && rm $FILE
-MSG
+    <<~MSG
+      $ FILE=$(mktemp)
+      $ wget 'https://github.com/cogito-lang/libcogito/releases/download/v0.2.0/libcogito_0.2.0-1_amd64.deb' -qO $FILE
+      $ sudo dpkg -i $FILE && rm $FILE
+    MSG
   end
 failure_message << '=' * 85 << "\n\n"
 

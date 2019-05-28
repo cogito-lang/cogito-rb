@@ -1,17 +1,17 @@
-# coding: utf-8
+# frozen_string_literal: true
 
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'cogito/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'cogito'
   spec.version       = Cogito::VERSION
-  spec.authors       = ['Localytics']
-  spec.email         = ['oss@localytics.com']
+  spec.authors       = ['Kevin Deisz']
+  spec.email         = ['kevin.deisz@gmail.com']
 
   spec.summary       = 'A ruby library that wraps libcogito'
-  spec.homepage      = 'https://github.com/localytics/cogito-rb'
+  spec.homepage      = 'https://github.com/cogito-lang/cogito-rb'
   spec.license       = 'MIT'
 
   spec.files         =
@@ -21,11 +21,10 @@ Gem::Specification.new do |spec|
   spec.extensions    = ['ext/cogito/extconf.rb']
   spec.require_paths = ['lib']
 
-  spec.add_development_dependency 'bundler', '~> 1.14'
-  spec.add_development_dependency 'coveralls', '~> 0.8'
-  spec.add_development_dependency 'minitest', '~> 5.10'
+  spec.add_development_dependency 'bundler', '~> 2.0'
+  spec.add_development_dependency 'minitest', '~> 5.11'
   spec.add_development_dependency 'rake', '~> 12.0'
   spec.add_development_dependency 'rake-compiler', '~> 1.0'
-  spec.add_development_dependency 'rubocop', '~> 0.48'
+  spec.add_development_dependency 'rubocop', '~> 0.70'
   spec.add_development_dependency 'simplecov', '~> 0.14'
 end

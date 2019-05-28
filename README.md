@@ -1,10 +1,9 @@
 # cogito-rb
 
-[![Build Status](https://travis-ci.org/localytics/cogito-rb.svg?branch=master)](https://travis-ci.org/localytics/cogito-rb)
-[![Coverage Status](https://coveralls.io/repos/github/localytics/cogito-rb/badge.svg?branch=master)](https://coveralls.io/github/localytics/cogito-rb?branch=master)
-[![Gem](https://img.shields.io/gem/v/cogito.svg)](https://rubygems.org/gems/cogito)
+[![Build Status](https://travis-ci.com/cogito-lang/cogito-rb.svg?branch=master)](https://travis-ci.com/cogito-lang/cogito-rb)
+[![Gem Version](https://img.shields.io/gem/v/cogito.svg)](https://rubygems.org/gems/cogito)
 
-A small ruby library that links against [libcogito](https://github.com/localytics/libcogito).
+A small ruby library that wraps [libcogito](https://github.com/cogito-lang/libcogito).
 
 ## Installation
 
@@ -53,7 +52,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/localytics/cogito-rb.
+Bug reports and pull requests are welcome on GitHub at https://github.com/cogito-lang/cogito-rb.
 
 ## License
 

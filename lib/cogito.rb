@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 require 'cogito/cogito'
 require 'cogito/version'
 
+# A small ruby library that wraps libcogito
 module Cogito
   class << self
     def to_json(str, subs = {})
