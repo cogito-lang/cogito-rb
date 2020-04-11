@@ -1,6 +1,6 @@
 # cogito-rb
 
-[![Build Status](https://travis-ci.com/cogito-lang/cogito-rb.svg?branch=master)](https://travis-ci.com/cogito-lang/cogito-rb)
+[![Build Status](https://github.com/cogito-lang/cogito-rb/workflows/Main/badge.svg)](https://github.com/cogito-lang/cogito-rb/actions)
 [![Gem Version](https://img.shields.io/gem/v/cogito.svg)](https://rubygems.org/gems/cogito)
 
 A small ruby library that wraps [libcogito](https://github.com/cogito-lang/libcogito).
